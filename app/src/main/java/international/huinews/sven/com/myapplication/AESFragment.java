@@ -38,15 +38,15 @@ public class AESFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_des, container, false);
-        mingEdit = (EditText) rootview.findViewById(R.id.mingEdit);
-        miyaoEdit = (EditText) rootview.findViewById(R.id.miyaoEdit);
-        miEdit = (EditText) rootview.findViewById(R.id.miEdit);
-        ming2Edit = (EditText) rootview.findViewById(R.id.ming2Edit);
-        initButton = (Button) rootview.findViewById(R.id.initButton);
+        mingEdit = rootview.findViewById(R.id.mingEdit);
+        miyaoEdit = rootview.findViewById(R.id.miyaoEdit);
+        miEdit = rootview.findViewById(R.id.miEdit);
+        ming2Edit = rootview.findViewById(R.id.ming2Edit);
+        initButton = rootview.findViewById(R.id.initButton);
         initButton.setOnClickListener(new myClickListener());
-        jiamiButton = (Button) rootview.findViewById(R.id.encryptButton);
+        jiamiButton = rootview.findViewById(R.id.encryptButton);
         jiamiButton.setOnClickListener(new myClickListener());
-        jiemiButton = (Button) rootview.findViewById(R.id.decryptButton);
+        jiemiButton = rootview.findViewById(R.id.decryptButton);
         jiemiButton.setOnClickListener(new myClickListener());
         return rootview;
     }
@@ -67,24 +67,24 @@ public class AESFragment extends Fragment {
                 miyaoEdit.setText(aesKey);
             }
             if (view == jiamiButton) {
-                String desKey = "";
-                desKey = miyaoEdit.getText().toString();
-                if (desKey.equals("")) {
+                String aesKey;
+                aesKey = miyaoEdit.getText().toString();
+                if (aesKey.equals("")) {
                     Toast.makeText(getActivity(), "请先初始化密钥", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                String inputStr = "";
+                String inputStr;
                 inputStr = mingEdit.getText().toString();
                 if (inputStr.equals("")) {
                     Toast.makeText(getActivity(), "待加密数据不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 byte[] inputData = inputStr.getBytes();
-                byte[] outputData = new byte[0];
+                byte[] outputData;
                 String outputStr = "";
                 try {
-                    outputData = aes.encrypt(inputData, desKey);
+                    outputData = aes.encrypt(inputData, aesKey);
                     outputStr = aes.encryptBASE64(outputData);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -92,13 +92,13 @@ public class AESFragment extends Fragment {
                 miEdit.setText(outputStr);
             }
             if (view == jiemiButton) {
-                String desKey = "";
-                desKey = miyaoEdit.getText().toString();
-                if (desKey.equals("")) {
+                String aesKey;
+                aesKey = miyaoEdit.getText().toString();
+                if (aesKey.equals("")) {
                     Toast.makeText(getActivity(), "请先初始化密钥并进行加密", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String outputStr = "";
+                String outputStr;
                 outputStr = miEdit.getText().toString();
                 if (outputStr.equals("")) {
                     Toast.makeText(getActivity(), "密文不能为空,请先加密产生密文", Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ public class AESFragment extends Fragment {
                 }
                 byte[] outputData = new byte[0];
                 try {
-                    outputData = aes.decrypt(aes.decryptBASE64(outputStr), desKey);
+                    outputData = aes.decrypt(aes.decryptBASE64(outputStr), aesKey);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

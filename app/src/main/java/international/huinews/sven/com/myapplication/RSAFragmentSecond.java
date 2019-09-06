@@ -47,11 +47,11 @@ public class RSAFragmentSecond extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview =inflater.inflate(R.layout.fragment_rsa_second,container,false);
-        userdataEdit = (EditText)rootview.findViewById(R.id.userdataEdit);
-        encryptedEdit = (EditText)rootview.findViewById(R.id.encryptedEdit);
-        decryptedEdit = (EditText)rootview.findViewById(R.id.decryptedEdit);
-        encryptButton = (Button)rootview.findViewById(R.id.encryptButton);
-        decryptButton = (Button)rootview.findViewById(R.id.decryptButton);
+        userdataEdit = rootview.findViewById(R.id.userdataEdit);
+        encryptedEdit = rootview.findViewById(R.id.encryptedEdit);
+        decryptedEdit = rootview.findViewById(R.id.decryptedEdit);
+        encryptButton = rootview.findViewById(R.id.encryptButton);
+        decryptButton = rootview.findViewById(R.id.decryptButton);
         encryptButton.setOnClickListener(new myClickListener());
         decryptButton.setOnClickListener(new myClickListener());
         return rootview;

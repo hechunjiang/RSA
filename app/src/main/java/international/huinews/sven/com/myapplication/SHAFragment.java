@@ -39,9 +39,9 @@ public class SHAFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_md5, container, false);
-        mingEdit = (EditText) rootview.findViewById(R.id.mingEdit);
-        miEdit = (EditText) rootview.findViewById(R.id.miEdit);
-        encryptButton = (Button) rootview.findViewById(R.id.encryptButton);
+        mingEdit =  rootview.findViewById(R.id.mingEdit);
+        miEdit =  rootview.findViewById(R.id.miEdit);
+        encryptButton =  rootview.findViewById(R.id.encryptButton);
         encryptButton.setOnClickListener(new myClickListener());
         return rootview;
     }

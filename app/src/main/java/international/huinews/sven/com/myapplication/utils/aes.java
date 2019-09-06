@@ -22,25 +22,24 @@ import javax.crypto.spec.SecretKeySpec;
  * 日期：2018/11/14 08
  */
 public class aes {
-    public static final String ALGORITHM = "AES";
+    private static final String ALGORITHM = "AES";
 
-    public static byte[] decryptBASE64(String key) throws Exception {
+    public static byte[] decryptBASE64(String key) {
         return Base64.decode(key, Base64.DEFAULT);
     }
 
-    public static String encryptBASE64(byte[] key) throws Exception {
+    public static String encryptBASE64(byte[] key) {
         return Base64.encodeToString(key, Base64.DEFAULT);
     }
 
-    private static Key toKey(byte[] key) throws Exception {
+    private static Key toKey(byte[] key) {
         //DESKeySpec dks = new DESKeySpec(key);
         //SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
         //SecretKey secretKey = keyFactory.generateSecret(dks);
 
         // 当使用其他对称加密算法时，如AES、Blowfish等算法时，用下述代码替换上述三行代码
-        SecretKey secretKey = new SecretKeySpec(key, ALGORITHM);
 
-        return secretKey;
+        return new SecretKeySpec(key, ALGORITHM);
     }
 
     public static byte[] decrypt(byte[] data, String key) throws Exception {
@@ -60,13 +59,13 @@ public class aes {
         return cipher.doFinal(data);
     }
 
-    public static String initKey() throws Exception {
+    public static String initKey() {
         return initKey(null);
     }
 
-    public static String initKey(String seed) throws Exception {
+    public static String initKey(String seed) {
         try {
-            SecureRandom secureRandom = null;
+            SecureRandom secureRandom;
 
             if (seed != null) {
                 secureRandom = new SecureRandom(decryptBASE64(seed));

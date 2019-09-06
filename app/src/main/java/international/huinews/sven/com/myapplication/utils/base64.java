@@ -1,7 +1,5 @@
 package international.huinews.sven.com.myapplication.utils;
 
-import android.util.Base64;
-
 import java.io.ByteArrayOutputStream;
 
 /**

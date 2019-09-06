@@ -62,7 +62,7 @@ public class md5 {
         }
         FileInputStream in = null;
         String result = "";
-        byte buffer[] = new byte[8192];
+        byte[] buffer = new byte[8192];
         int len;
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");

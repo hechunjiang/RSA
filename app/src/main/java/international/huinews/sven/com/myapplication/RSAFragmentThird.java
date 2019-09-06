@@ -44,11 +44,11 @@ public class RSAFragmentThird extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_rsa_third, container, false);
-        userdataEdit = (EditText) rootview.findViewById(R.id.userdataEdit);
-        signedEdit = (EditText) rootview.findViewById(R.id.signedEdit);
-        provedEdit = (EditText) rootview.findViewById(R.id.provedEdit);
-        signButton = (Button) rootview.findViewById(R.id.signButton);
-        proveButton = (Button) rootview.findViewById(R.id.proveButton);
+        userdataEdit = rootview.findViewById(R.id.userdataEdit);
+        signedEdit = rootview.findViewById(R.id.signedEdit);
+        provedEdit = rootview.findViewById(R.id.provedEdit);
+        signButton = rootview.findViewById(R.id.signButton);
+        proveButton = rootview.findViewById(R.id.proveButton);
         signButton.setOnClickListener(new myClickListener());
         proveButton.setOnClickListener(new myClickListener());
         return rootview;

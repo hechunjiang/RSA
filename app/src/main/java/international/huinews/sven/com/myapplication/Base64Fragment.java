@@ -1,8 +1,6 @@
 package international.huinews.sven.com.myapplication;
 
 import android.app.Activity;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Base64;
 
 import international.huinews.sven.com.myapplication.utils.base64;
 
@@ -51,10 +47,10 @@ public class Base64Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_base64, container, false);
-        editMing = (EditText) rootview.findViewById(R.id.mingEdit);
-        buttonJiami = (Button) rootview.findViewById(R.id.encryptButton);
-        buttonJiemi = (Button) rootview.findViewById(R.id.decryptButton);
-        editMi = (EditText) rootview.findViewById(R.id.miEdit);
+        editMing = rootview.findViewById(R.id.mingEdit);
+        buttonJiami = rootview.findViewById(R.id.encryptButton);
+        buttonJiemi = rootview.findViewById(R.id.decryptButton);
+        editMi = rootview.findViewById(R.id.miEdit);
         buttonJiami.setOnClickListener(new myClickListener());
         buttonJiemi.setOnClickListener(new myClickListener());
         return rootview;
